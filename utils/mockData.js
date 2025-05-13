@@ -1,40 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div><img className="logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/10/1/f6d6503d-bfbe-49ad-97bc-1a63a1f520c6_8378db10-8513-466a-8500-9548593934fe.jpg"></img></div>
-            <div className="nav-items">
-               <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>🛒</li>
-                </ul> 
-        </div>
-        </div>
-    )
-}
-
-const resCardStyle = {
-    backgroundColor : "#f0f0f0"
-}
-
-const ResCard = (props) => {
-    const {resData} = props
-    const {name,cloudinaryImageId,cuisines,avgRating,deliveryTime,costForTwo} = resData?.info;
-    return (
-        <div className="res-card" style={resCardStyle}>         
-            <img className="res-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/"+cloudinaryImageId} />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRating}⭐</h4>
-            <h4>{deliveryTime}</h4>
-            <h4>{costForTwo}</h4>
-        </div>
-    );
-}
 
 const resList = [
   {
@@ -676,40 +639,5 @@ const resList = [
     widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
   },
 ];
-    
-
-const Body = () => {
-    return (
-        <div className="body">
-            <div className="search">Search</div>
-            <div className="res-container">
-            { resList.map((restaurant)=> (
-                <ResCard key={restaurant.info.id} resData={restaurant} />
-            ))}
-            {/* <ResCard resData={resList[0]} /> */}
-            </div>
-        </div>
-    )
-}
-
-const Footer = () => {
-    return (
-        <div className="footer">
-            <p>Developed by Nandini Jairath</p>
-        </div>
-    )
-}
-
-const AppLayout = () => {
-    return (    
-        <div className="app">
-            <Header />
-            <Body />
-            <Footer />
-        </div>
-        
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />); //This is the syntax that babel understands
+   
+export default resList;
