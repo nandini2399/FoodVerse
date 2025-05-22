@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  let [listOfRestaurant, setListOfRest] = useState(resList);
-  let [filteredListOfRestaurant, setFilteredListOfRest] = useState(resList);
+  let [listOfRestaurant, setListOfRest] = useState([]);
+  let [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
 
   let [searchValue,setSearchValue] = useState("")
 
   const filterList = () => {
     let filteredList = listOfRestaurant.filter((currRes) => {
-      if (currRes.info.avgRating > 4.2) return true;
+      if (currRes.info.avgRating > 4.5) return true;
     });
-    setListOfRest(filteredList);
+    setFilteredListOfRest(filteredList);
   };
 
   useEffect(() => {
@@ -28,7 +28,9 @@ const Body = () => {
       );
 
       const json = await data.json();
-      console.log(json);
+      console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setFilteredListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     } catch (e) {
       console.log(e);
     }

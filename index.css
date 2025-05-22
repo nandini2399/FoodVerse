@@ -41,7 +41,7 @@
 }
 
 .res-card{
-    width: 18%;
+    width: 22%;
     margin: 1%;
     padding: 5px;;
 }
@@ -77,4 +77,16 @@
 .filter-btn:hover, .search-btn:hover{
     background-color: white;
     color: black;
+}
+
+.shim{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.shim-card{
+    width: 22%;
+    height: 380px;
+    margin: 1%;
+    padding: 5px;;
 }
