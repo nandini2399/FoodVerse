@@ -1,10 +1,13 @@
 import { LOGO_URL } from "../../utils/constants";
 import { useState, useEffect, use } from "react";
-
+import { Link } from "react-router";
+import useNetworkStatus from "../../utils/useNetworkStatus";
 
 const Header = () => {
 
     const [btnName,setBtnName] = useState("Login")
+
+    const onlineStatus = useNetworkStatus();
 
     console.log("Component")
 
@@ -16,10 +19,13 @@ const Header = () => {
         <div className="header">
             <div><img className="logo" src={LOGO_URL}></img></div>
             <div className="nav-items">
+               <div style={{float:"right"}}>Network : {onlineStatus?"🟢":"🔴"}</div>
                <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
+                
+                
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
                 <li>🛒</li>
                 <li onClick={()=>{
                     btnName==="Login"? setBtnName("Logout") : setBtnName("Login")

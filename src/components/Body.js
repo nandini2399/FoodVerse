@@ -2,12 +2,16 @@ import ResCard from "./ResCard";
 import resList from "../../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
+import useNetworkStatus from "../../utils/useNetworkStatus";
 
 const Body = () => {
   let [listOfRestaurant, setListOfRest] = useState([]);
   let [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
 
   let [searchValue,setSearchValue] = useState("")
+
+  let onlineStatus = useNetworkStatus();
 
   const filterList = () => {
     let filteredList = listOfRestaurant.filter((currRes) => {
@@ -41,11 +45,15 @@ const Body = () => {
     setFilteredListOfRest(filteredRes)
   }
 
-
+  
   //conditional rendering
   // if(listOfRestaurant.length===0){
   //   return <Shimmer />
   // }
+
+  if(!onlineStatus){
+    return <h1>You're offline. Please check your internet connection.</h1>
+  }
 
   return listOfRestaurant.length===0? <Shimmer /> :(
     <div className="body">
@@ -61,7 +69,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredListOfRestaurant.map((restaurant) => (
-          <ResCard key={restaurant.info.id} resData={restaurant} />
+          <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><ResCard resData={restaurant} /></Link>
         ))}
         {/* <ResCard resData={resList[0]} /> */}
       </div>

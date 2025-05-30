@@ -7,6 +7,7 @@ const resCardStyle = {
 const ResCard = (props) => {
     const {resData} = props
     const {name,cloudinaryImageId,cuisines,avgRating,sla,costForTwo} = resData?.info;
+   
     return (
         <div className="res-card" style={resCardStyle}>         
             <img className="res-logo" src={CDN_URL+cloudinaryImageId} />
