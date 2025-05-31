@@ -6,12 +6,12 @@ import { Link } from "react-router";
 import useNetworkStatus from "../../utils/useNetworkStatus";
 
 const Body = () => {
-  let [listOfRestaurant, setListOfRest] = useState([]);
-  let [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
+  const [listOfRestaurant, setListOfRest] = useState([]);
+  const [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
 
-  let [searchValue,setSearchValue] = useState("")
+  const [searchValue,setSearchValue] = useState("")
 
-  let onlineStatus = useNetworkStatus();
+  const onlineStatus = useNetworkStatus();
 
   const filterList = () => {
     let filteredList = listOfRestaurant.filter((currRes) => {
@@ -25,7 +25,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    listOfRestaurant=[]
+    //listOfRestaurant=[]
     try {
       const data = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6407512&lng=77.3396964&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
