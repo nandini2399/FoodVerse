@@ -1,4 +1,6 @@
-Namaste React 🚀
+FoodVerse : All your food needs at one place 
+
+![alt text](utils/img.png)
 
 echo "# FoodVerse" >> README.md
 git init

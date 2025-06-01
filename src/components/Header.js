@@ -16,23 +16,21 @@ const Header = () => {
     },[btnName]) //will be everytime value of btnName changes  
 
     return (
-        <div className="header">
-            <div><img className="logo" src={LOGO_URL}></img></div>
-            <div className="nav-items">
-               <div style={{float:"right"}}>Network : {onlineStatus?"🟢":"🔴"}</div>
-               <ul>
-                
-                
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
-                <li><Link to="/groceries">Groceries</Link></li>
-                <li>🛒</li>
-                <li onClick={()=>{
+        <div className="flex justify-between bg-green-100">
+            <div><img className="w-20 border-green-950" src={LOGO_URL}></img></div>
+            <div className="m-2 px-5">
+               <ul className="flex p-4 mx-4">
+                <li className="mx-2 p-2 hover:bg-white text-green-900"><Link to="/">Home</Link></li>
+                <li className="mx-2 p-2 hover:bg-white text-green-900"><Link to="/about">About Us</Link></li>
+                <li className="mx-2 p-2 hover:bg-white text-green-900"><Link to="/contact">Contact Us</Link></li>
+                <li className="mx-2 p-2 hover:bg-white text-green-900"><Link to="/groceries">Groceries</Link></li>
+                <li className="mx-2 p-2 hover:bg-white text-green-900">🛒</li>
+                <li className="mx-2 p-2 hover:bg-white text-green-900" onClick={()=>{
                     btnName==="Login"? setBtnName("Logout") : setBtnName("Login")
                 }}>{btnName}</li>
+                <li className="mx-2 p-2">Network: {onlineStatus?"🟢":"🔴"}</li>
                 </ul> 
-        </div>
+            </div>
         </div>
     )
 }

@@ -27,7 +27,7 @@ const Body = () => {
   const fetchData = async () => {
     //listOfRestaurant=[]
     try {
-      const data = await fetch(
+      const data =await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6407512&lng=77.3396964&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
 
@@ -58,16 +58,16 @@ const Body = () => {
   return listOfRestaurant.length===0? <Shimmer /> :(
     <div className="body">
       {/* <div className="search">Search</div> */}
-      <div className="filter">
-        <div className="search">
-          <input type="text" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} className="search-box" />
-          <button onClick={searchData} className="search-btn">Search</button>
+      <div className="flex m-2">
+        <div className="m-2">
+          <input type="text" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} className="border-2 rounded-2xl px-5" />
+          <button onClick={searchData} className="p-1 m-1 hover:bg-green-100">Search</button>
         </div>
-        <button className="filter-btn" onClick={filterList}>
+        <button className="p-1 m-1 hover:bg-green-100" onClick={filterList}>
           Top Rated
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredListOfRestaurant.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><ResCard resData={restaurant} /></Link>
         ))}

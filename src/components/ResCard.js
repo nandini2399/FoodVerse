@@ -1,21 +1,19 @@
 import { CDN_URL } from "../../utils/constants";
 
-const resCardStyle = {
-    backgroundColor : "#f0f0f0"
-}
+
 
 const ResCard = (props) => {
     const {resData} = props
     const {name,cloudinaryImageId,cuisines,avgRating,sla,costForTwo} = resData?.info;
    
     return (
-        <div className="res-card" style={resCardStyle}>         
-            <img className="res-logo" src={CDN_URL+cloudinaryImageId} />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRating}⭐</h4>
-            <h4>{sla.deliveryTime} mins</h4>
-            <h4>{costForTwo}</h4>
+        <div className="p-2 m-2 w-[280px] bg-green-50 hover:bg-green-200">         
+            <img className="w-3xs" src={CDN_URL+cloudinaryImageId} />
+            <h3 className="font-bold">{name}</h3>
+            <h4 className="text-wrap">{cuisines.join(", ")}</h4>
+            <h4 className="text-wrap">{avgRating}⭐</h4>
+            <h4 className="text-wrap">{sla.deliveryTime} mins</h4>
+            <h4 className="text-wrap">{costForTwo}</h4>
         </div>
     );
 }
