@@ -1,4 +1,5 @@
 import ResCard from "./ResCard";
+import { withPromotedLabel } from "./ResCard";
 import resList from "../../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -10,6 +11,8 @@ const Body = () => {
   const [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
 
   const [searchValue,setSearchValue] = useState("")
+
+  const ResCardPromoted = withPromotedLabel(ResCard)
 
   const onlineStatus = useNetworkStatus();
 
@@ -67,9 +70,12 @@ const Body = () => {
           Top Rated
         </button>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {filteredListOfRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><ResCard resData={restaurant} /></Link>
+          <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}>
+            {restaurant.info.isOpen?(<ResCardPromoted resData={restaurant}/>):  <ResCard resData={restaurant} />}
+           
+            </Link>
         ))}
         {/* <ResCard resData={resList[0]} /> */}
       </div>
