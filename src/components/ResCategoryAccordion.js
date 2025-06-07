@@ -1,11 +1,11 @@
 import { useState } from "react"
 import AccordionList from "./AccordionList"
-
-const ResCategoryAccordion = ({data}) =>{
-    const [showlist,setShowList] = useState(false)
+//Item list
+const ResCategoryAccordion = ({data,showlist,setShowIndex}) =>{
+    // const [showlist,setShowList] = useState(false)
 
     const handleClick = () =>{
-        setShowList(!showlist)
+        setShowIndex();
     }
     console.log(data)
     return (
@@ -16,7 +16,8 @@ const ResCategoryAccordion = ({data}) =>{
                 
             </div>
             <div>
-                {showlist && <AccordionList key={data.categoryId} data={data.itemCards} /> }                   
+                {/* controlled component   */}
+                {showlist && <AccordionList key={data.categoryId} data={data.itemCards} />    }               
             </div>
             
         </div>

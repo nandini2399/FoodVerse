@@ -1,16 +1,19 @@
 import ResCard from "./ResCard";
 import { withPromotedLabel } from "./ResCard";
 import resList from "../../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useNetworkStatus from "../../utils/useNetworkStatus";
+import UserContext from "../../utils/UserContext.js";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRest] = useState([]);
   const [filteredListOfRestaurant, setFilteredListOfRest] = useState([]);
 
   const [searchValue,setSearchValue] = useState("")
+
+  const{mode} = useContext(UserContext)
 
   const ResCardPromoted = withPromotedLabel(ResCard)
 
@@ -59,7 +62,7 @@ const Body = () => {
   }
 
   return listOfRestaurant.length===0? <Shimmer /> :(
-    <div className="body">
+    <div className={`${mode?'body bg-gray-400':'body'}`}>
       {/* <div className="search">Search</div> */}
       <div className="flex m-2">
         <div className="m-2">

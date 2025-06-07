@@ -10,6 +10,9 @@ const ResMenu = () => {
     const {resId} = useParams();
     
     const resInfo = useRestaurantMenu(resId)
+
+    //Open and close accordion logic
+    let [showIndex, setShowIndex] = useState(null)
     
     if(resInfo===null) return (<Shimmer />)
 
@@ -27,8 +30,13 @@ const ResMenu = () => {
             <h2 className="font-bold text-lg">{cuisines.join(",")}</h2>
             <h2>{costForTwoMessage}</h2>
 
-            {categories.map((category)=>{
-                return <ResCategoryAccordion key={category.card?.card?.categoryId} data={category.card.card}/>
+            {categories.map((category,index)=>{
+                return <ResCategoryAccordion 
+                key={category.card?.card?.categoryId} 
+                data={category.card.card} 
+                showlist={index===showIndex? true:false}
+                setShowIndex = {()=>{setShowIndex(index)}}
+                />
             })}
         </div>
     )
