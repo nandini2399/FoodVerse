@@ -9,6 +9,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ResMenu from "./components/ResMenu";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
 
 const Groceries = lazy(()=> import("./components/Groceries"))
 
@@ -18,13 +21,17 @@ const AppLayout = () => {
     const [currentMode,setCurrentMode] = useState(false)
 
     return (
-      <UserContext.Provider value={{ loggedInUser: loggedIn,mode:currentMode,setCurrentMode }}>
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: loggedIn,mode:currentMode,setCurrentMode }}>
         <div className="app">
           <Header />
           <Outlet />
           <Footer />
         </div>
       </UserContext.Provider>
+
+      </Provider>
+      
     );
 }
 

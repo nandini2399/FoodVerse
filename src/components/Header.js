@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router";
 import useNetworkStatus from "../../utils/useNetworkStatus";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
@@ -12,7 +13,7 @@ const Header = () => {
 
     const {loggedInUser,mode,setCurrentMode} = useContext(UserContext)
     
-
+    const cartItems = useSelector((store)=>store.cart.items);
     const toggleMode = () =>{
         setCurrentMode(!mode)
     }
@@ -60,7 +61,7 @@ const Header = () => {
             >
               <Link to="/groceries">Groceries</Link>
             </li>
-            <li className="mx-2 p-2  text-green-900 hover:bg-white">🛒</li>
+            <li className="mx-2 p-2  text-green-900 hover:bg-white">🛒{cartItems.length}</li>
             <li
               className={`mx-2 p-2  ${
                 mode ? "text-amber-50" : "text-green-900 hover:bg-white"
