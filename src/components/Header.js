@@ -13,7 +13,10 @@ const Header = () => {
 
     const {loggedInUser,mode,setCurrentMode} = useContext(UserContext)
     
+    //subscribing redux slice
     const cartItems = useSelector((store)=>store.cart.items);
+    console.log(cartItems)
+
     const toggleMode = () =>{
         setCurrentMode(!mode)
     }
@@ -61,7 +64,9 @@ const Header = () => {
             >
               <Link to="/groceries">Groceries</Link>
             </li>
-            <li className="mx-2 p-2  text-green-900 hover:bg-white">🛒{cartItems.length}</li>
+            <li className="mx-2 p-2  text-green-900 hover:bg-white">
+              <Link to="/cart">🛒{cartItems.length}</Link></li>
+              
             <li
               className={`mx-2 p-2  ${
                 mode ? "text-amber-50" : "text-green-900 hover:bg-white"
