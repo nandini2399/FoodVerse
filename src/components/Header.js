@@ -76,8 +76,8 @@ const Header = () => {
                   ? setBtnName("Logout")
                   : setBtnName("Login");
               }}
-            >
-              {btnName}
+            ><button> {btnName}</button>
+             
             </li>
             {/* <li className="mx-2 p-2">{loggedInUser}</li> */}
             <li className="mx-2 p-2">

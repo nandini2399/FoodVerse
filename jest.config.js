@@ -15,6 +15,7 @@ const config = {
   // cacheDirectory: "C:\\Users\\HP\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances, contexts and results before every test
+  setupFiles: ['<rootDir>/jest.setup.ts'],
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test

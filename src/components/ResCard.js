@@ -4,6 +4,7 @@ import { CDN_URL } from "../../utils/constants";
 
 const ResCard = (props) => {
     const {resData} = props
+    console.log(resData)
     const {name,cloudinaryImageId,cuisines,avgRating,sla,costForTwo} = resData?.info;
    
     return (
