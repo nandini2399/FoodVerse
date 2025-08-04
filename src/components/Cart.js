@@ -24,7 +24,7 @@ const Cart = () =>{
             </button>
             {cartItems.map((item, idx) => {
               return (
-                <p key={idx} className="my-2 font-medium">
+                <p data-testid="foodItems" key={idx} className="my-2 font-medium">
                   {item}
                 </p>
               );

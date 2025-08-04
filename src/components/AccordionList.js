@@ -3,7 +3,7 @@ import { CDN_URL } from "../../utils/constants";
 import { addItem } from "../../utils/cartSlice";
 
 const AccordionList = ({data}) => {
-    console.log(data)
+    //console.log(data)
 
     const dispatch = useDispatch()
 
@@ -16,7 +16,7 @@ const AccordionList = ({data}) => {
     return (
         <div className="">
             {data.map((e)=>(
-                <div key={e.card.info.imageId} className="mx-2 border-b-1 border-gray-400 p-2  flex">
+                <div data-testid="foodItems" key={e.card.info.imageId} className="mx-2 border-b-1 border-gray-400 p-2  flex">
                     <div className="w-9/12 text-left p-2">
                         <h1 className="font-semibold">{e.card.info.name} </h1>
                         <h1 className="font-semibold">Rs {e.card.info.price/100}</h1>

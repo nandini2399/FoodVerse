@@ -38,7 +38,7 @@ const Body = () => {
       );
 
       const json = await data.json();
-      console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       setFilteredListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     } catch (e) {
@@ -66,7 +66,7 @@ const Body = () => {
       {/* <div className="search">Search</div> */}
       <div className="flex m-2">
         <div className="m-2">
-          <input type="text" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} className="border-2 rounded-2xl px-5" />
+          <input data-testid="searchInput" type="text" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} className="border-2 rounded-2xl px-5" />
           <button onClick={searchData} className="p-1 m-1 hover:bg-green-100">Search</button>
         </div>
         <button className="p-1 m-1 hover:bg-green-100" onClick={filterList}>
